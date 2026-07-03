@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://registry.yarnspinner.dev/dev.yarnspinner.unity)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('latest:', d.get\\('dist-tags'\\)\\); print\\('versions:', sorted\\(d.get\\('versions', {}\\).keys\\(\\)\\)[-8:]\\)\")",
+      "Bash(curl -sI https://registry.yarnspinner.dev/dev.yarnspinner.unity)",
+      "Bash(curl -s https://package.openupm.com/dev.yarnspinner.unity)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('dist-tags:', d.get\\('dist-tags'\\)\\); vs=sorted\\(d.get\\('versions', {}\\).keys\\(\\)\\); print\\('recent versions:', vs[-8:]\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s \"https://api.github.com/repos/YarnSpinnerTool/YarnSpinner-Unity/git/trees/main?recursive=1\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/YarnSpinnerTool/YarnSpinner-Unity/main/Tests/Runtime/DialogueRunnerTests/DialogueRunnerTests.yarnproject\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/YarnSpinnerTool/YarnSpinner-Unity/main/Editor/Templates/YarnScriptTemplate.txt\")",
+      "Bash(python3 -m json.tool /Users/macbookpro/Projects/WORK/game-jam-26/Packages/manifest.json)",
+      "Bash(python3 -m json.tool /Users/macbookpro/Projects/WORK/game-jam-26/Assets/Dialogue/GameDialogue.yarnproject)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/YarnSpinnerTool/YarnSpinner-Unity/main/Runtime/DialogueRunner/DialogueRunner.cs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/YarnSpinnerTool/YarnSpinner-Unity/main/Prefabs/Dialogue%20System.prefab\")",
+      "Bash(/Applications/Unity/Hub/Editor/6000.5.2f1/Unity.app/Contents/MacOS/Unity -batchmode -projectPath /Users/macbookpro/Projects/WORK/game-jam-26 -executeMethod YarnSpinnerTestSceneBuilder.BuildScene -logFile /private/tmp/claude-501/-Users-macbookpro-Projects-WORK-game-jam-26/67afd918-29e6-4344-89ca-452efab00009/scratchpad/unity_build.log)",
+      "Bash(echo \"UNITY_EXIT_CODE=$?\")",
+      "Bash([ -f \"$LOG\" ])",
+      "Bash(grep -B2 \"m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75\")",
+      "Bash(awk '/--- !u!114/{block=$0; capture=1; buf=\"\"} capture{buf=buf\"\\\\n\"$0} /^--- !u!114/{if\\(prevbuf!=\"\"\\){}} *)",
+      "Bash(find /Users/macbookpro/Projects/WORK/game-jam-26/Library/PackageCache/dev.yarnspinner.unity@41713f8bc13b -iname *OptionsListView* -o -iname *OptionItem* -o -iname *LineView* -o -iname *ContinueButton*)",
+      "Bash(find /Users/macbookpro/Projects/WORK/game-jam-26/Library/PackageCache/dev.yarnspinner.unity@41713f8bc13b/Runtime/Views -iname *.cs)"
+    ]
+  }
+}

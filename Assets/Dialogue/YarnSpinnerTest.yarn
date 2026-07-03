@@ -1,0 +1,19 @@
+title: YarnSpinnerTest
+---
+Đỏ: Ê Xanh, cậu có nghe thấy gì không?
+Xanh: Nghe gì cơ?
+Đỏ: Hình như có ai đó vừa cài Yarn Spinner vào game của chúng ta.
+Xanh: Vậy là từ giờ mình nói chuyện có phụ đề luôn hả?
+-> Đúng vậy, tuyệt chưa!
+    Xanh: Quá tuyệt! Còn chờ gì mà không làm game thôi!
+-> Thật ra hai cậu chỉ là hai ô vuông để test...
+    Đỏ: ... Buồn ghê.
+    Xanh: Không sao, ô vuông cũng có ước mơ mà.
+Đỏ: Oke, dialogue chạy ngon rồi đó!
+<<jump TestEnd>>
+===
+
+title: TestEnd
+---
+Xanh: Hẹn gặp lại trong game nhé!
+===

@@ -1,0 +1,32 @@
+title: Intro
+---
+// Lines starting with a name and colon are attributed to that character.
+Guide: Hey! You made it. Welcome to the jam.
+Guide: Ready to get started?
+
+// -> creates a player choice. Indented lines run when that choice is picked.
+-> Absolutely!
+    Guide: That's the spirit.
+    <<set $player_is_keen = true>>
+-> Not really...
+    Guide: No worries, it'll click once we're moving.
+
+// <<jump NodeName>> moves to another node.
+<<jump FirstTask>>
+===
+
+title: FirstTask
+---
+// Variables and conditionals:
+<<if $player_is_keen>>
+    Guide: Since you're keen, let's skip the tutorial.
+<<else>>
+    Guide: Let's take it slow. First, try talking to people.
+<<endif>>
+
+// Commands call into C# — register them with [YarnCommand] or
+// dialogueRunner.AddCommandHandler(). Example:
+// <<shake_camera 0.5>>
+
+Guide: Good luck out there!
+===
