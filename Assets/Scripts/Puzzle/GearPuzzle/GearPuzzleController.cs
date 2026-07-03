@@ -7,7 +7,7 @@ namespace Puzzle.GearPuzzle
     {
         private void Update()
         {
-            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            if (Keyboard.current?.escapeKey.wasPressedThisFrame == true)
                 Complete(PuzzleResult.Cancelled);
         }
 

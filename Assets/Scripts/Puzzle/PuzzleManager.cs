@@ -10,6 +10,7 @@ namespace Puzzle
 
         public void Open(PuzzleController prefab)
         {
+            if (_activePuzzle != null) return;
             _activePuzzle = Instantiate(prefab);
             Time.timeScale = 0f;
             _activePuzzle.OnPuzzleOpened();
