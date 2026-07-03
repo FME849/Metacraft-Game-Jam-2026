@@ -5,7 +5,7 @@ namespace Puzzle
     public class ChestInteractable : MonoBehaviour
     {
         [SerializeField] PuzzleManager puzzleManager;
-        [SerializeField] PuzzleController gearPuzzlePrefab;
+        [SerializeField] PuzzleController clockPuzzlePrefab;
         [SerializeField] PuzzleResultChannelSO resultChannel;
 
         private bool _puzzleOpen;
@@ -15,7 +15,7 @@ namespace Puzzle
             if (_puzzleOpen) return;
             _puzzleOpen = true;
             resultChannel.OnRaised += HandleResult;
-            puzzleManager.Open(gearPuzzlePrefab);
+            puzzleManager.Open(clockPuzzlePrefab);
         }
 
         private void HandleResult(PuzzleResult result)
