@@ -3,7 +3,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Puzzle"
+        "Puzzle",
+        "TextCrawl"
     ],
     "includePlatforms": ["Editor"],
     "excludePlatforms": [],

@@ -400,5 +400,5 @@ MonoBehaviour:
   lightIndicator: {fileID: 0}
   lightOffColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   lightOnColor: {r: 1, g: 0, b: 0, a: 1}
-  targetHour: 1
-  targetMinute: 20
+  targetHour: 2
+  targetMinute: 15
