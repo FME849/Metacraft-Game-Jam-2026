@@ -141,33 +141,58 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: f9da68f16ae374cdc91ef5e82594373f, type: 3}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: lines.Array.size
-      value: 5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: 'lines.Array.data[0]'
-      value: In the smoke-choked reaches of the Empire, a man of standing does not
-        simply die.
+      value: Since the Frankenstein Incident, life itself has become a science.
       objectReference: {fileID: 0}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: 'lines.Array.data[1]'
-      value: "House Ashworth built its fortune on the Continuance Act \u2014 the
-        right to return, once, through means the Church calls unholy and the Registry
-        calls law."
+      value: The wealthy no longer ask whether death can be defeated. They ask how
+        much gold it costs.
       objectReference: {fileID: 0}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: 'lines.Array.data[2]'
-      value: Edmund Ashworth never asked for the policy his family bought in his
-        name.
+      value: Through the science of Continuance, a life may be restored, a body remade,
+        and a name preserved.
       objectReference: {fileID: 0}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: 'lines.Array.data[3]'
-      value: But when the eastern rail line failed him, the policy activated without
-        his consent.
+      value: But the law grants the made man nothing.
       objectReference: {fileID: 0}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: 'lines.Array.data[4]'
-      value: Now he wakes in a stranger's ward, and the doctors are asking questions
-        no dying man should have to answer twice.
+      value: A clone may not inherit, may not testify, may not own so much as the
+        coat on his back.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[5]'
+      value: Continuance does not create a second life.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[6]'
+      value: It certifies that only one ever existed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[7]'
+      value: 'The law is clear:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[8]'
+      value: No man may possess two lives.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[9]'
+      value: No house may claim two heirs.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[10]'
+      value: No soul may cast two shadows.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[11]'
+      value: And a made man is no man at all.
       objectReference: {fileID: 0}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: fadeCurve.m_Curve.Array.data[0].time
