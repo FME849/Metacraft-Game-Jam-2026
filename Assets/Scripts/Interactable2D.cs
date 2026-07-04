@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Metacraft.Interaction
@@ -8,6 +9,7 @@ namespace Metacraft.Interaction
         [SerializeField] private string interactionLabel = "Interact";
 
         public Transform Transform => transform;
+        public event Action<GameObject> Interacted;
 
         private void Awake()
         {
@@ -25,6 +27,7 @@ namespace Metacraft.Interaction
         public void Interact(GameObject interactor)
         {
             Debug.Log($"{interactor.name} interacted with {name}: {interactionLabel}", this);
+            Interacted?.Invoke(interactor);
         }
     }
 }

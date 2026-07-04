@@ -9,6 +9,7 @@ namespace Metacraft.Player
         [SerializeField] private string animationStateName = "WalkAnimation";
         [SerializeField, Min(0f)] private float animationSpeedMultiplier = 1f;
         [SerializeField] private bool flipByMoveDirection = true;
+        [SerializeField] private bool invertFlipDirection;
         [SerializeField] private Transform flipRoot;
 
         private Animator animator;
@@ -47,8 +48,14 @@ namespace Metacraft.Player
             }
             else if (flipByMoveDirection && Mathf.Abs(horizontalDelta) > 0.0001f)
             {
+                float direction = Mathf.Sign(horizontalDelta);
+                if (invertFlipDirection)
+                {
+                    direction *= -1f;
+                }
+
                 Vector3 scale = flipRoot.localScale;
-                scale.x = Mathf.Sign(horizontalDelta) * defaultScaleX;
+                scale.x = direction * defaultScaleX;
                 flipRoot.localScale = scale;
             }
 
