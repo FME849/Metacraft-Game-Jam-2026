@@ -13,6 +13,7 @@ namespace Metacraft.TextCrawl
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private Image topFade;
         [SerializeField] private Image bottomFade;
+        [SerializeField] private AnimationCurve fadeCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
         [SerializeField] private string[] lines;
         [SerializeField, Min(1f)] private float scrollSpeed = 50f;
         [SerializeField] private string nextSceneName;
@@ -33,9 +34,8 @@ namespace Metacraft.TextCrawl
             crawlText.text = string.Join("\n\n", lines);
             LayoutRebuilder.ForceRebuildLayoutImmediate(crawlContent);
 
-            Sprite fadeSprite = CreateEdgeFadeSprite();
-            topFade.sprite = fadeSprite;
-            bottomFade.sprite = fadeSprite;
+            topFade.sprite = CreateEdgeFadeSprite(edgeAtTextureBottom: false);
+            bottomFade.sprite = CreateEdgeFadeSprite(edgeAtTextureBottom: true);
 
             float viewportHeight = viewport.rect.height;
             float contentHeight = crawlContent.rect.height;
@@ -87,7 +87,7 @@ namespace Metacraft.TextCrawl
             return hasReferences;
         }
 
-        private static Sprite CreateEdgeFadeSprite()
+        private Sprite CreateEdgeFadeSprite(bool edgeAtTextureBottom)
         {
             const int height = 64;
             var texture = new Texture2D(1, height, TextureFormat.Alpha8, false)
@@ -97,7 +97,9 @@ namespace Metacraft.TextCrawl
 
             for (int y = 0; y < height; y++)
             {
-                float alpha = (float)y / (height - 1);
+                float t = (float)y / (height - 1);
+                float distanceFromEdge = edgeAtTextureBottom ? t : 1f - t;
+                float alpha = fadeCurve.Evaluate(distanceFromEdge);
                 texture.SetPixel(0, y, new Color(0f, 0f, 0f, alpha));
             }
 
