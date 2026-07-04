@@ -848,8 +848,8 @@ MonoBehaviour:
     down: 0
     left: 0
   inputCamera: {fileID: 0}
-  cellColor: {r: 0.13, g: 0.12, b: 0.11, a: 1}
-  tileColor: {r: 0.48, g: 0.35, b: 0.18, a: 1}
+  cellColor: {r: 1, g: 1, b: 1, a: 1}
+  tileColor: {r: 0, g: 0, b: 0, a: 1}
   connectedColor: {r: 0.18, g: 0.85, b: 0.62, a: 1}
   sourceColor: {r: 0.1, g: 0.5, b: 1, a: 1}
   exitColor: {r: 1, g: 0.55, b: 0.12, a: 1}
@@ -861,17 +861,17 @@ MonoBehaviour:
   tJunctionPipeSprite: {fileID: 2349601490214011103, guid: 2840ea00ef75a45a589b8ab416bc950e, type: 3}
   crossPipeSprite: {fileID: -6017654394558985018, guid: c580a7a4c63e84cbd8a680072597a07e, type: 3}
   customPipeSprite: {fileID: 0}
-  pipeSpriteScale: 0.4
-  endPipeSpriteScale: 0.4
-  straightPipeSpriteScale: 0.4
-  cornerPipeSpriteScale: 0.4
-  tJunctionPipeSpriteScale: 0.4
-  crossPipeSpriteScale: 0.4
-  customPipeSpriteScale: 0.4
+  pipeSpriteScale: 0.354
+  endPipeSpriteScale: 0.354
+  straightPipeSpriteScale: 0.354
+  cornerPipeSpriteScale: 0.354
+  tJunctionPipeSpriteScale: 0.354
+  crossPipeSpriteScale: 0.354
+  customPipeSpriteScale: 0.354
   endPipeSpriteClockwiseOffset: 0
   straightPipeSpriteClockwiseOffset: 0
-  cornerPipeSpriteClockwiseOffset: 0
-  tJunctionPipeSpriteClockwiseOffset: 0
+  cornerPipeSpriteClockwiseOffset: 2
+  tJunctionPipeSpriteClockwiseOffset: 2
   crossPipeSpriteClockwiseOffset: 0
   customPipeSpriteClockwiseOffset: 0
   tintPipeSprites: 1
