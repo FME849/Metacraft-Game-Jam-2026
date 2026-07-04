@@ -1,4 +1,6 @@
 using System.Collections;
+using Metacraft.Interaction;
+using Metacraft.Player;
 using Metacraft.Puzzles;
 using UnityEngine;
 
@@ -13,6 +15,14 @@ namespace Metacraft.SceneFlow
         [SerializeField] private AudioClip steamSound;
         [SerializeField, Min(0.01f)] private float fadeOutDuration = 0.75f;
         [SerializeField] private GameObject[] objectsToEnableOnSolved;
+        [SerializeField] private bool unlockPlayerControlsOnSolved = true;
+        [SerializeField] private SimplePlayerMovement2D playerMovement;
+        [SerializeField] private string playerObjectName = "MainPlayer";
+        [SerializeField] private bool disableInteractableOnSolved = true;
+        [SerializeField] private Interactable2D interactableToDisable;
+        [SerializeField] private Collider2D[] collidersToDisable;
+
+        private bool unlockedPlayerControls;
 
         private bool hasPlayed;
 
@@ -82,7 +92,7 @@ namespace Metacraft.SceneFlow
 
             if (fadeGroup == null)
             {
-                EnableSolvedObjects();
+                FinishSolvedState();
                 yield break;
             }
 
@@ -100,7 +110,76 @@ namespace Metacraft.SceneFlow
             fadeGroup.alpha = 0f;
             fadeGroup.blocksRaycasts = false;
             fadeGroup.gameObject.SetActive(false);
+            FinishSolvedState();
+        }
+
+        private void FinishSolvedState()
+        {
+            DisableInteractable();
+            UnlockPlayerControls();
             EnableSolvedObjects();
+        }
+
+        private void DisableInteractable()
+        {
+            if (!disableInteractableOnSolved)
+            {
+                return;
+            }
+
+            if (interactableToDisable == null)
+            {
+                interactableToDisable = GetComponent<Interactable2D>();
+            }
+
+            if (interactableToDisable != null)
+            {
+                interactableToDisable.SetInteractionEnabled(false);
+            }
+
+            if (collidersToDisable == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < collidersToDisable.Length; i++)
+            {
+                if (collidersToDisable[i] != null)
+                {
+                    collidersToDisable[i].enabled = false;
+                }
+            }
+        }
+
+        private void UnlockPlayerControls()
+        {
+            if (!unlockPlayerControlsOnSolved || unlockedPlayerControls)
+            {
+                return;
+            }
+
+            ResolvePlayerMovement();
+            if (playerMovement == null)
+            {
+                return;
+            }
+
+            playerMovement.SetControlsLocked(false);
+            unlockedPlayerControls = true;
+        }
+
+        private void ResolvePlayerMovement()
+        {
+            if (playerMovement != null || string.IsNullOrWhiteSpace(playerObjectName))
+            {
+                return;
+            }
+
+            GameObject playerObject = GameObject.Find(playerObjectName);
+            if (playerObject != null)
+            {
+                playerMovement = playerObject.GetComponentInChildren<SimplePlayerMovement2D>();
+            }
         }
 
         private void EnableSolvedObjects()

@@ -2433,6 +2433,13 @@ MonoBehaviour:
   fadeOutDuration: 0.75
   objectsToEnableOnSolved:
   - {fileID: 166574849947800414}
+  unlockPlayerControlsOnSolved: 1
+  playerMovement: {fileID: 0}
+  playerObjectName: MainPlayer
+  disableInteractableOnSolved: 1
+  interactableToDisable: {fileID: 1686496889}
+  collidersToDisable:
+  - {fileID: 1686496890}
 --- !u!114 &1686496887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2479,6 +2486,9 @@ MonoBehaviour:
   dialogueNodeName: Scene03_Dialogue
   dialogueStartLineIndex: 30
   dialogueLineCount: 4
+  lockPlayerControlsWhenOpened: 1
+  playerMovement: {fileID: 0}
+  playerObjectName: MainPlayer
   triggerOnce: 1
 --- !u!1 &1686496888
 GameObject:
@@ -3355,7 +3365,7 @@ Transform:
   m_GameObject: {fileID: 166574849947800414}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: -3.2, z: 0}
+  m_LocalPosition: {x: -8.6, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3371,12 +3381,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62f563e15fa4492bb44e7e672cf55a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Scene02
+  m_Name:
+  m_EditorClassIdentifier:
+  targetSceneName: Scene04
   playerObjectName: MainPlayer
-  playerTag: 
-  fadeOut: {fileID: 0}
+  playerTag:
+  fadeOut: {fileID: 1536951590}
+  dialoguePresenter: {fileID: 0}
+  dialogueNodeName:
+  dialogueStartLineIndex: 0
+  dialogueLineCount: -1
+  pageImage: {fileID: 0}
+  pageImageLocalPosition: {x: 0, y: 0, z: 0}
+  waitForClickAfterPageImage: 0
+  hidePageImageAfterClick: 1
+  afterPageDialogueLineCount: 0
+  delayAfterSequence: 0
+  loadSceneAfterSequence: 1
+  playerMovement: {fileID: 0}
 --- !u!61 &1670041179867492531
 BoxCollider2D:
   m_ObjectHideFlags: 0

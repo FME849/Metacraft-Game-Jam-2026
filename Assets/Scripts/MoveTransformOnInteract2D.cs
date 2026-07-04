@@ -1,5 +1,6 @@
 using System.Collections;
 using Metacraft.Dialogue;
+using Metacraft.Player;
 using UnityEngine;
 
 namespace Metacraft.Interaction
@@ -18,6 +19,9 @@ namespace Metacraft.Interaction
         [SerializeField] private string dialogueNodeName;
         [SerializeField, Min(0)] private int dialogueStartLineIndex;
         [SerializeField] private int dialogueLineCount = -1;
+        [SerializeField] private bool lockPlayerControlsWhenOpened = true;
+        [SerializeField] private SimplePlayerMovement2D playerMovement;
+        [SerializeField] private string playerObjectName = "MainPlayer";
         [SerializeField] private bool triggerOnce = true;
 
         private Interactable2D interactable;
@@ -26,6 +30,7 @@ namespace Metacraft.Interaction
         private Coroutine sequenceRoutine;
         private bool hasTriggered;
         private bool dialogueCompleted;
+        private bool controlsLockedBySequence;
 
         private void Awake()
         {
@@ -89,9 +94,41 @@ namespace Metacraft.Interaction
                 StopCoroutine(moveRoutine);
             }
 
+            LockPlayerControls();
             FadeTo(fadeTargetAlpha, fadeDuration);
             moveRoutine = StartCoroutine(MoveToTarget());
             sequenceRoutine = null;
+        }
+
+        private void LockPlayerControls()
+        {
+            if (!lockPlayerControlsWhenOpened || controlsLockedBySequence)
+            {
+                return;
+            }
+
+            ResolvePlayerMovement();
+            if (playerMovement == null)
+            {
+                return;
+            }
+
+            playerMovement.SetControlsLocked(true);
+            controlsLockedBySequence = true;
+        }
+
+        private void ResolvePlayerMovement()
+        {
+            if (playerMovement != null || string.IsNullOrWhiteSpace(playerObjectName))
+            {
+                return;
+            }
+
+            GameObject playerObject = GameObject.Find(playerObjectName);
+            if (playerObject != null)
+            {
+                playerMovement = playerObject.GetComponentInChildren<SimplePlayerMovement2D>();
+            }
         }
 
         public void FadeTo(float targetAlpha, float durationSeconds)
