@@ -57,7 +57,7 @@ namespace Metacraft.Interaction
 
         private void HandleInteracted(GameObject interactor)
         {
-            if ((triggerOnce && hasTriggered) || movingTransform == null || targetPoint == null)
+            if ((triggerOnce && hasTriggered) || !HasSequenceWork())
             {
                 return;
             }
@@ -70,6 +70,12 @@ namespace Metacraft.Interaction
             }
 
             sequenceRoutine = StartCoroutine(RunSequence());
+        }
+
+        private bool HasSequenceWork()
+        {
+            return (movingTransform != null && targetPoint != null) ||
+                (dialoguePresenter != null && !string.IsNullOrWhiteSpace(dialogueNodeName));
         }
 
         private IEnumerator RunSequence()
@@ -87,6 +93,12 @@ namespace Metacraft.Interaction
                 {
                     yield return null;
                 }
+            }
+
+            if (movingTransform == null || targetPoint == null)
+            {
+                sequenceRoutine = null;
+                yield break;
             }
 
             if (moveRoutine != null)

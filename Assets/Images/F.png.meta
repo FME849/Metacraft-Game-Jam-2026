@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b4ffe4a81f9544e91a56a3bb0155e555
+guid: a29ffc3336e5745c583b6514f06a4ede
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3460630249341456121
-    second: BackGroundMansion_0
+      213: -3687348052613884379
+    second: F_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackGroundMansion_0
+      name: F_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 3360
-        height: 1440
+        y: 8
+        width: 1024
+        height: 1503
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 701f7099f1f59ffc0800000000000000
-      internalID: -3460630249341456121
+      spriteID: 52698b88b78e3dcc0800000000000000
+      internalID: -3687348052613884379
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BackGroundMansion_0: -3460630249341456121
+      F_0: -3687348052613884379
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
