@@ -13,6 +13,7 @@ namespace Metacraft.SceneFlow
         [SerializeField] private string nodeName = "Scene03_Dialogue";
         [SerializeField, Min(0)] private int firstLineIndex = 26;
         [SerializeField, Min(1)] private int firstLineCount = 1;
+        [SerializeField] private int lineCountAfterAnimation = -1;
         [SerializeField, Min(0f)] private float delayBeforeAnimation = 0.5f;
         [SerializeField] private Transform nurseRoot;
         [SerializeField] private Vector3 nurseTurnEuler = new Vector3(0f, 180f, 0f);
@@ -54,20 +55,22 @@ namespace Metacraft.SceneFlow
             LockPlayerControls();
 
             yield return PlayDialogueSegment(firstLineIndex, firstLineCount);
-            yield return WaitBeforeAnimationDelay();
 
-            if (nurseRoot != null)
+            if (ShouldRunNurseTurn())
             {
+                yield return WaitBeforeAnimationDelay();
                 nurseRoot.localRotation = Quaternion.Euler(nurseTurnEuler);
+                yield return WaitAfterAnimationDelay();
             }
 
-            yield return WaitAfterAnimationDelay();
-
-            yield return PlayDialogueSegment(firstLineIndex + firstLineCount, -1);
-            yield return WaitBeforeAnimationDelay();
-
-            if (nurseRoot != null)
+            if (lineCountAfterAnimation != 0)
             {
+                yield return PlayDialogueSegment(firstLineIndex + firstLineCount, lineCountAfterAnimation);
+            }
+
+            if (ShouldRunNurseReturn())
+            {
+                yield return WaitBeforeAnimationDelay();
                 nurseRoot.localRotation = Quaternion.Euler(nurseReturnEuler);
             }
 
@@ -89,6 +92,16 @@ namespace Metacraft.SceneFlow
             }
 
             UnlockPlayerControls();
+        }
+
+        private bool ShouldRunNurseTurn()
+        {
+            return nurseRoot != null;
+        }
+
+        private bool ShouldRunNurseReturn()
+        {
+            return nurseRoot != null;
         }
 
         private IEnumerator PlayDialogueSegment(int startLineIndex, int maxLines)

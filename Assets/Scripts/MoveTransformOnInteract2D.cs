@@ -1,4 +1,5 @@
 using System.Collections;
+using Metacraft.Dialogue;
 using UnityEngine;
 
 namespace Metacraft.Interaction
@@ -10,11 +11,21 @@ namespace Metacraft.Interaction
         [SerializeField] private Transform targetPoint;
         [SerializeField, Min(0.01f)] private float duration = 1f;
         [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        [SerializeField] private CanvasGroup fadeGroup;
+        [SerializeField, Range(0f, 1f)] private float fadeTargetAlpha = 0.5f;
+        [SerializeField, Min(0.01f)] private float fadeDuration = 0.75f;
+        [SerializeField] private ClickDialoguePresenter dialoguePresenter;
+        [SerializeField] private string dialogueNodeName;
+        [SerializeField, Min(0)] private int dialogueStartLineIndex;
+        [SerializeField] private int dialogueLineCount = -1;
         [SerializeField] private bool triggerOnce = true;
 
         private Interactable2D interactable;
         private Coroutine moveRoutine;
+        private Coroutine fadeRoutine;
+        private Coroutine sequenceRoutine;
         private bool hasTriggered;
+        private bool dialogueCompleted;
 
         private void Awake()
         {
@@ -48,12 +59,54 @@ namespace Metacraft.Interaction
 
             hasTriggered = true;
 
+            if (sequenceRoutine != null)
+            {
+                StopCoroutine(sequenceRoutine);
+            }
+
+            sequenceRoutine = StartCoroutine(RunSequence());
+        }
+
+        private IEnumerator RunSequence()
+        {
+            if (dialoguePresenter != null && !string.IsNullOrWhiteSpace(dialogueNodeName))
+            {
+                dialogueCompleted = false;
+                dialoguePresenter.Play(
+                    dialogueNodeName,
+                    dialogueStartLineIndex,
+                    dialogueLineCount,
+                    () => dialogueCompleted = true);
+
+                while (!dialogueCompleted)
+                {
+                    yield return null;
+                }
+            }
+
             if (moveRoutine != null)
             {
                 StopCoroutine(moveRoutine);
             }
 
+            FadeTo(fadeTargetAlpha, fadeDuration);
             moveRoutine = StartCoroutine(MoveToTarget());
+            sequenceRoutine = null;
+        }
+
+        public void FadeTo(float targetAlpha, float durationSeconds)
+        {
+            if (fadeGroup == null)
+            {
+                return;
+            }
+
+            if (fadeRoutine != null)
+            {
+                StopCoroutine(fadeRoutine);
+            }
+
+            fadeRoutine = StartCoroutine(FadeOverlay(targetAlpha, durationSeconds));
         }
 
         private IEnumerator MoveToTarget()
@@ -73,6 +126,28 @@ namespace Metacraft.Interaction
 
             movingTransform.position = targetPosition;
             moveRoutine = null;
+        }
+
+        private IEnumerator FadeOverlay(float targetAlpha, float durationSeconds)
+        {
+            fadeGroup.gameObject.SetActive(true);
+            fadeGroup.blocksRaycasts = targetAlpha > 0.01f;
+
+            float startAlpha = fadeGroup.alpha;
+            float elapsed = 0f;
+
+            while (elapsed < durationSeconds)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / durationSeconds);
+                fadeGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
+                yield return null;
+            }
+
+            fadeGroup.alpha = targetAlpha;
+            fadeGroup.blocksRaycasts = targetAlpha > 0.01f;
+            fadeGroup.gameObject.SetActive(targetAlpha > 0.01f);
+            fadeRoutine = null;
         }
     }
 }
