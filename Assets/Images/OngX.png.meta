@@ -103,12 +103,12 @@ TextureImporter:
       name: OngX_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 9
-        width: 799
-        height: 799
+        x: 2
+        y: 0
+        width: 801
+        height: 804
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 27ba02973ccac482b84fc4a6e98d080c
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
