@@ -26,6 +26,9 @@ namespace Metacraft.Player
         private float moveInput;
         private float coyoteTimer;
         private float jumpBufferTimer;
+        private int controlLockCount;
+
+        public bool ControlsLocked => controlLockCount > 0;
 
         private void Awake()
         {
@@ -35,6 +38,12 @@ namespace Metacraft.Player
 
         private void Update()
         {
+            if (ControlsLocked)
+            {
+                ClearBufferedInput();
+                return;
+            }
+
             Keyboard keyboard = Keyboard.current;
             if (keyboard == null)
             {
@@ -74,6 +83,24 @@ namespace Metacraft.Player
             }
         }
 
+        public void SetControlsLocked(bool locked)
+        {
+            if (locked)
+            {
+                controlLockCount++;
+            }
+            else
+            {
+                controlLockCount = Mathf.Max(0, controlLockCount - 1);
+            }
+
+            if (ControlsLocked)
+            {
+                ClearBufferedInput();
+                StopHorizontalMovement();
+            }
+        }
+
         private bool IsGrounded()
         {
             Bounds bounds = capsule.bounds;
@@ -91,6 +118,22 @@ namespace Metacraft.Player
             }
 
             return false;
+        }
+
+        private void ClearBufferedInput()
+        {
+            moveInput = 0f;
+            jumpBufferTimer = 0f;
+        }
+
+        private void StopHorizontalMovement()
+        {
+            if (rb == null)
+            {
+                rb = GetComponent<Rigidbody2D>();
+            }
+
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         }
     }
 }

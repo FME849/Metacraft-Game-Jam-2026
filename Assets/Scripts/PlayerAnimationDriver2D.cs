@@ -7,6 +7,7 @@ namespace Metacraft.Player
     {
         [SerializeField] private float movingThreshold = 0.02f;
         [SerializeField] private string animationStateName = "WalkAnimation";
+        [SerializeField, Min(0f)] private float animationSpeedMultiplier = 1f;
         [SerializeField] private bool flipByMoveDirection = true;
         [SerializeField] private Transform flipRoot;
 
@@ -38,7 +39,7 @@ namespace Metacraft.Player
             float horizontalSpeed = Mathf.Abs(horizontalDelta) / Mathf.Max(Time.deltaTime, 0.0001f);
             bool isMoving = horizontalSpeed > movingThreshold;
 
-            animator.speed = isMoving ? 1f : 0f;
+            animator.speed = isMoving ? animationSpeedMultiplier : 0f;
 
             if (!isMoving)
             {
