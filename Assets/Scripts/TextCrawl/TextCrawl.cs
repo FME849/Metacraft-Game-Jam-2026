@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ namespace Metacraft.TextCrawl
         [SerializeField, Min(1f)] private float scrollSpeed = 50f;
         [SerializeField] private string nextSceneName;
         [SerializeField] private AudioClip backgroundMusic;
+        [SerializeField, Min(0f)] private float musicFadeOutDuration = 1.2f;
 
         private float scrollDistance;
         private float traveled;
@@ -67,11 +69,29 @@ namespace Metacraft.TextCrawl
             if (traveled >= scrollDistance)
             {
                 finished = true;
+                StartCoroutine(FadeOutMusicAndLoadNextScene());
+            }
+        }
 
-                if (!string.IsNullOrEmpty(nextSceneName))
+        private IEnumerator FadeOutMusicAndLoadNextScene()
+        {
+            if (audioSource.isPlaying && musicFadeOutDuration > 0f)
+            {
+                float startVolume = audioSource.volume;
+                float elapsed = 0f;
+                while (elapsed < musicFadeOutDuration)
                 {
-                    SceneManager.LoadScene(nextSceneName);
+                    elapsed += Time.deltaTime;
+                    audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / musicFadeOutDuration);
+                    yield return null;
                 }
+
+                audioSource.volume = 0f;
+            }
+
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                SceneManager.LoadScene(nextSceneName);
             }
         }
 

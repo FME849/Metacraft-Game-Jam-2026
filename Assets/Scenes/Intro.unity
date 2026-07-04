@@ -129,12 +129,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: scrollSpeed
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: nextSceneName
       value: Scene01
       objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: backgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: f9da68f16ae374cdc91ef5e82594373f, type: 3}
     - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: lines.Array.size
       value: 5
@@ -165,13 +169,53 @@ PrefabInstance:
       value: Now he wakes in a stranger's ward, and the doctors are asking questions
         no dying man should have to answer twice.
       objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].time
+      value: 0.40493214
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].time
+      value: 0.9916687
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].value
+      value: 1.0023673
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].value
+      value: 0.002380371
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].inSlope
+      value: -0.011781133
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].inSlope
+      value: -1.2571238
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].outSlope
+      value: -0.011781133
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].inWeight
+      value: 0.11261445
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[1].outSlope
+      value: -1.2571238
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: fadeCurve.m_Curve.Array.data[0].outWeight
+      value: 0.34506845
+      objectReference: {fileID: 0}
     - target: {fileID: 4486140054593480548, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: m_Name
       value: TextCrawlScreen
       objectReference: {fileID: 0}
     - target: {fileID: 6166257054296860209, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 350
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
       propertyPath: m_Pivot.x
