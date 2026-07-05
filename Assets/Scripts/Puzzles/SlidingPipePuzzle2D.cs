@@ -55,6 +55,7 @@ namespace Metacraft.Puzzles
         [Header("Sprites")]
         [SerializeField] private Sprite cellSprite;
         [SerializeField] private Sprite tileBackgroundSprite;
+        [SerializeField, Min(0f)] private float tileBackgroundSpriteScale = 1f;
         [SerializeField] private Sprite endPipeSprite;
         [SerializeField] private Sprite straightPipeSprite;
         [SerializeField] private Sprite cornerPipeSprite;
@@ -144,13 +145,16 @@ namespace Metacraft.Puzzles
             }
 
             Vector2 worldPosition = inputCamera.ScreenToWorldPoint(mouse.position.ReadValue());
-            Collider2D hit = Physics2D.OverlapPoint(worldPosition);
-            if (hit == null)
+            Collider2D[] hits = Physics2D.OverlapPointAll(worldPosition);
+            for (int i = 0; i < hits.Length; i++)
             {
-                return;
+                Tile tile = FindTile(hits[i].transform);
+                if (tile != null)
+                {
+                    TrySlide(tile);
+                    return;
+                }
             }
-
-            TrySlide(FindTile(hit.gameObject));
         }
 
         private void OnDestroy()
@@ -233,11 +237,19 @@ namespace Metacraft.Puzzles
             tile.Root.transform.position = CellToWorld(tile.Cell);
             generatedObjects.Add(tile.Root);
 
-            SpriteRenderer tileRenderer = tile.Root.AddComponent<SpriteRenderer>();
+            tile.Root.transform.localScale = Vector3.one * (cellSize * 0.9f);
+
+            GameObject tileBackground = new GameObject("TileBackground");
+            tileBackground.transform.SetParent(tile.Root.transform, false);
+            tileBackground.transform.localPosition = Vector3.zero;
+            tileBackground.transform.localScale = Vector3.one * tileBackgroundSpriteScale;
+            generatedObjects.Add(tileBackground);
+
+            SpriteRenderer tileRenderer = tileBackground.AddComponent<SpriteRenderer>();
             tileRenderer.sprite = tileBackgroundSprite != null ? tileBackgroundSprite : squareSprite;
             tileRenderer.color = tileColor;
             tileRenderer.sortingOrder = sortingOrderOffset + 5;
-            tile.Root.transform.localScale = Vector3.one * (cellSize * 0.9f);
+            tile.BackgroundRenderer = tileRenderer;
 
             BoxCollider2D collider = tile.Root.AddComponent<BoxCollider2D>();
             collider.isTrigger = true;
@@ -396,11 +408,11 @@ namespace Metacraft.Puzzles
             RefreshConnections();
         }
 
-        private Tile FindTile(GameObject root)
+        private Tile FindTile(Transform hitTransform)
         {
             for (int i = 0; i < tiles.Count; i++)
             {
-                if (tiles[i].Root == root)
+                if (hitTransform == tiles[i].Root.transform || hitTransform.IsChildOf(tiles[i].Root.transform))
                 {
                     return tiles[i];
                 }
@@ -530,8 +542,10 @@ namespace Metacraft.Puzzles
                     pipePart.color = tintPipeSprites ? pipeColor : Color.white;
                 }
 
-                SpriteRenderer tileRenderer = tile.Root.GetComponent<SpriteRenderer>();
-                tileRenderer.color = tileColor;
+                if (tile.BackgroundRenderer != null)
+                {
+                    tile.BackgroundRenderer.color = tileColor;
+                }
             }
 
             if (entranceRenderer != null)
@@ -744,6 +758,7 @@ namespace Metacraft.Puzzles
             public PipeOpenings Openings { get; }
             public Vector2Int Cell { get; set; }
             public GameObject Root { get; set; }
+            public SpriteRenderer BackgroundRenderer { get; set; }
             public List<SpriteRenderer> PipeParts { get; set; }
             public bool IsConnected { get; set; }
         }
