@@ -13,7 +13,13 @@ namespace Puzzle.ClockPuzzle
         [SerializeField] private int targetHour = 1;
         [SerializeField] private int targetMinute = 20;
 
-        private void Awake() => lightIndicator.color = lightOffColor;
+        private void Awake()
+        {
+            if (lightIndicator != null)
+            {
+                lightIndicator.color = lightOffColor;
+            }
+        }
 
         private void Update()
         {
@@ -33,7 +39,11 @@ namespace Puzzle.ClockPuzzle
         public void OnPuzzleSolved()
         {
             Debug.Log($"Puzzle solved! Current: {targetHour}:{targetMinute}");
-            lightIndicator.color = lightOnColor;
+            if (lightIndicator != null)
+            {
+                lightIndicator.color = lightOnColor;
+            }
+
             Complete(PuzzleResult.Success);
         }
 

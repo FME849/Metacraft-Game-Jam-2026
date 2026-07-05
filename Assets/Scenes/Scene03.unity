@@ -1910,12 +1910,13 @@ MonoBehaviour:
     left: 0
   inputCamera: {fileID: 0}
   cellColor: {r: 1, g: 1, b: 1, a: 0.39215687}
-  tileColor: {r: 0, g: 0, b: 0, a: 0}
+  tileColor: {r: 1, g: 1, b: 1, a: 1}
   connectedColor: {r: 0.18, g: 0.85, b: 0.62, a: 1}
   sourceColor: {r: 0.1, g: 0.5, b: 1, a: 1}
   exitColor: {r: 1, g: 0.55, b: 0.12, a: 1}
   cellSprite: {fileID: 0}
-  tileBackgroundSprite: {fileID: 0}
+  tileBackgroundSprite: {fileID: 504687686943520294, guid: 0473b0d9e86f64eca8e9e397bed76124, type: 3}
+  tileBackgroundSpriteScale: 0.818
   endPipeSprite: {fileID: -3064506202956578311, guid: 64ad23c33aca84fe3a0ce5ec10384612, type: 3}
   straightPipeSprite: {fileID: -3064506202956578311, guid: 64ad23c33aca84fe3a0ce5ec10384612, type: 3}
   cornerPipeSprite: {fileID: -4994233978254692981, guid: 66e51a86674834b89b17d65be00554f0, type: 3}
