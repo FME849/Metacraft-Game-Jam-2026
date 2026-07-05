@@ -9,6 +9,12 @@ namespace Metacraft.Interaction
 
         private void Update()
         {
+            if (currentInteractable != null && !currentInteractable.CanInteract)
+            {
+                SetCurrentInteractable(null);
+                return;
+            }
+
             Keyboard keyboard = Keyboard.current;
             if (keyboard == null || currentInteractable == null)
             {
@@ -24,7 +30,7 @@ namespace Metacraft.Interaction
         public void NotifyTriggerEntered(Collider2D other)
         {
             Interactable2D interactable = other.GetComponentInParent<Interactable2D>();
-            if (interactable == null)
+            if (interactable == null || !interactable.CanInteract)
             {
                 return;
             }

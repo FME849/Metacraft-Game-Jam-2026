@@ -6,6 +6,7 @@ using Metacraft.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Metacraft.Dialogue
 {
@@ -19,6 +20,10 @@ namespace Metacraft.Dialogue
         [SerializeField] private GameObject dialogueRoot;
         [SerializeField] private TMP_Text speakerText;
         [SerializeField] private TMP_Text bodyText;
+        [SerializeField] private GameObject avatarRoot;
+        [SerializeField] private Image avatarImage;
+        [SerializeField] private Sprite edmundAvatar;
+        [SerializeField] private Sprite npcAvatar;
         [SerializeField] private bool lockPlayerControlsWhilePlaying = true;
         [SerializeField] private SimplePlayerMovement2D playerMovement;
         [SerializeField] private string playerObjectName = "MainPlayer";
@@ -135,6 +140,7 @@ namespace Metacraft.Dialogue
             DialogueLine line = lines[currentLineIndex];
             speakerText.gameObject.SetActive(line.HasSpeaker);
             speakerText.text = line.Speaker;
+            UpdateAvatar(line);
             currentFullText = line.Text;
             bodyText.gameObject.SetActive(true);
             typewriterRoutine = StartCoroutine(TypeLine(currentFullText));
@@ -203,12 +209,61 @@ namespace Metacraft.Dialogue
                 bodyText.gameObject.SetActive(false);
             }
 
+            HideAvatar();
+
             if (dialogueRoot != null)
             {
                 dialogueRoot.SetActive(false);
             }
 
             UnlockPlayerControls();
+        }
+
+        private void UpdateAvatar(DialogueLine line)
+        {
+            if (avatarImage == null)
+            {
+                return;
+            }
+
+            if (!line.HasSpeaker)
+            {
+                HideAvatar();
+                return;
+            }
+
+            Sprite avatar = string.Equals(line.Speaker, "Edmund", StringComparison.OrdinalIgnoreCase)
+                ? edmundAvatar
+                : npcAvatar;
+
+            if (avatar == null)
+            {
+                HideAvatar();
+                return;
+            }
+
+            avatarImage.sprite = avatar;
+            avatarImage.preserveAspect = true;
+            if (avatarRoot != null)
+            {
+                avatarRoot.SetActive(true);
+            }
+
+            avatarImage.gameObject.SetActive(true);
+        }
+
+        private void HideAvatar()
+        {
+            if (avatarRoot != null)
+            {
+                avatarRoot.SetActive(false);
+                return;
+            }
+
+            if (avatarImage != null)
+            {
+                avatarImage.gameObject.SetActive(false);
+            }
         }
 
         private void LockPlayerControls()

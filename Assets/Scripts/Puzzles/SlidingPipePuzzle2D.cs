@@ -75,6 +75,7 @@ namespace Metacraft.Puzzles
         [SerializeField, Range(0, 3)] private int crossPipeSpriteClockwiseOffset;
         [SerializeField, Range(0, 3)] private int customPipeSpriteClockwiseOffset;
         [SerializeField] private bool tintPipeSprites = true;
+        [SerializeField] private int sortingOrderOffset;
 
         private Tile[,] grid;
         private readonly List<Tile> tiles = new();
@@ -85,6 +86,8 @@ namespace Metacraft.Puzzles
         private bool solved;
         private SpriteRenderer entranceRenderer;
         private SpriteRenderer exitRenderer;
+
+        public event Action Solved;
 
         private static readonly Vector2Int[] Directions =
         {
@@ -233,7 +236,7 @@ namespace Metacraft.Puzzles
             SpriteRenderer tileRenderer = tile.Root.AddComponent<SpriteRenderer>();
             tileRenderer.sprite = tileBackgroundSprite != null ? tileBackgroundSprite : squareSprite;
             tileRenderer.color = tileColor;
-            tileRenderer.sortingOrder = 5;
+            tileRenderer.sortingOrder = sortingOrderOffset + 5;
             tile.Root.transform.localScale = Vector3.one * (cellSize * 0.9f);
 
             BoxCollider2D collider = tile.Root.AddComponent<BoxCollider2D>();
@@ -296,7 +299,7 @@ namespace Metacraft.Puzzles
             SpriteRenderer renderer = visual.AddComponent<SpriteRenderer>();
             renderer.sprite = sprite;
             renderer.color = Color.white;
-            renderer.sortingOrder = 6;
+            renderer.sortingOrder = sortingOrderOffset + 6;
             parts.Add(renderer);
         }
 
@@ -311,7 +314,7 @@ namespace Metacraft.Puzzles
             SpriteRenderer renderer = part.AddComponent<SpriteRenderer>();
             renderer.sprite = squareSprite;
             renderer.color = Color.white;
-            renderer.sortingOrder = 6;
+            renderer.sortingOrder = sortingOrderOffset + 6;
             parts.Add(renderer);
         }
 
@@ -326,7 +329,7 @@ namespace Metacraft.Puzzles
             SpriteRenderer renderer = cell.AddComponent<SpriteRenderer>();
             renderer.sprite = cellSprite != null ? cellSprite : squareSprite;
             renderer.color = cellColor;
-            renderer.sortingOrder = 0;
+            renderer.sortingOrder = sortingOrderOffset;
         }
 
         private void CreateEndpoint(string name, Vector2Int adjacentCell, Vector2 direction, Color color, out SpriteRenderer endpointRenderer)
@@ -334,13 +337,39 @@ namespace Metacraft.Puzzles
             GameObject endpoint = new GameObject(name);
             endpoint.transform.SetParent(transform, false);
             endpoint.transform.position = CellToWorld(adjacentCell) + (Vector3)(direction * cellSize);
-            endpoint.transform.localScale = Vector3.one * (cellSize * 0.45f);
+            endpoint.transform.localScale = endPipeSprite != null
+                ? Vector3.one * cellSize * 0.9f * pipeSpriteScale * endPipeSpriteScale
+                : Vector3.one * (cellSize * 0.45f);
+            endpoint.transform.localRotation = Quaternion.Euler(
+                0f,
+                0f,
+                -90f * (GetEndpointClockwiseTurns(direction) + endPipeSpriteClockwiseOffset));
             generatedObjects.Add(endpoint);
 
             endpointRenderer = endpoint.AddComponent<SpriteRenderer>();
-            endpointRenderer.sprite = squareSprite;
+            endpointRenderer.sprite = endPipeSprite != null ? endPipeSprite : squareSprite;
             endpointRenderer.color = color;
-            endpointRenderer.sortingOrder = 7;
+            endpointRenderer.sortingOrder = sortingOrderOffset + 7;
+        }
+
+        private static int GetEndpointClockwiseTurns(Vector2 direction)
+        {
+            if (direction == Vector2.left)
+            {
+                return 1;
+            }
+
+            if (direction == Vector2.right)
+            {
+                return 3;
+            }
+
+            if (direction == Vector2.up)
+            {
+                return 2;
+            }
+
+            return 0;
         }
 
         private void TrySlide(Tile tile)
@@ -486,6 +515,7 @@ namespace Metacraft.Puzzles
             if (solved && !wasSolved)
             {
                 Debug.Log("Sliding Pipe Puzzle solved.", this);
+                Solved?.Invoke();
             }
         }
 

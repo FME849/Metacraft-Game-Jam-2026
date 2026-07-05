@@ -18,6 +18,7 @@ namespace Metacraft.SceneFlow
         [SerializeField] private SimplePlayerMovement2D playerMovement;
         [SerializeField] private string playerObjectName = "MainPlayer";
         [SerializeField] private string wakeStateName = "HospitalWake";
+        [SerializeField, Min(0f)] private float delayAfterAnimation = 0.5f;
         [SerializeField, Min(0f)] private float afterWakeDelay = 1f;
         [SerializeField] private NpcMoveToPoint2D doctorMovement;
         [SerializeField] private string followUpStateName;
@@ -71,6 +72,8 @@ namespace Metacraft.SceneFlow
                 {
                     yield return null;
                 }
+
+                yield return WaitAfterAnimationDelay();
             }
 
             yield return PlayAnimationState(followUpStateName, followUpFallbackWait);
@@ -186,6 +189,8 @@ namespace Metacraft.SceneFlow
                     yield return new WaitForSeconds(fallbackWait);
                 }
 
+                yield return WaitAfterAnimationDelay();
+
                 yield break;
             }
 
@@ -207,10 +212,19 @@ namespace Metacraft.SceneFlow
                 AnimatorStateInfo stateInfo = characterAnimator.GetCurrentAnimatorStateInfo(0);
                 if (stateInfo.shortNameHash != stateHash || stateInfo.normalizedTime >= 1f)
                 {
+                    yield return WaitAfterAnimationDelay();
                     yield break;
                 }
 
                 yield return null;
+            }
+        }
+
+        private IEnumerator WaitAfterAnimationDelay()
+        {
+            if (delayAfterAnimation > 0f)
+            {
+                yield return new WaitForSeconds(delayAfterAnimation);
             }
         }
     }
