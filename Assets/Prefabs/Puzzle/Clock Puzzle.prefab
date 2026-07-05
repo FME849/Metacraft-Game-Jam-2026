@@ -112,7 +112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4956090588233300792
 CanvasRenderer:
@@ -347,7 +347,7 @@ MonoBehaviour:
   hourHand: {fileID: 5656061821669261923}
   snapDegrees: 6
   minDragRadius: 20
-  startHour: 11
+  startHour: 12
   startMinute: 48
   handRestOffset: 0
 --- !u!1 &5497193650801788255
