@@ -9,6 +9,7 @@ namespace Metacraft.SceneFlow
         [SerializeField] private Transform[] targets;
         [SerializeField] private bool hideOnAwake = true;
         [SerializeField, Min(0f)] private float eyesFadeDelay = 1f;
+        [SerializeField] private TimedSfxCue fadeInSfx;
 
         private readonly List<SpriteRenderer> renderers = new();
         private readonly List<Color> visibleColors = new();
@@ -26,6 +27,8 @@ namespace Metacraft.SceneFlow
 
         public IEnumerator FadeIn(float duration)
         {
+            fadeInSfx?.Play();
+
             if (renderers.Count == 0)
             {
                 CacheRenderers();
