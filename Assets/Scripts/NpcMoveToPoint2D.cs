@@ -13,6 +13,7 @@ namespace Metacraft.NPC
         [SerializeField] private string walkStateName = "WalkAnimation";
         [SerializeField, Min(0f)] private float animationSpeedMultiplier = 1f;
         [SerializeField] private bool flipByMoveDirection = true;
+        [SerializeField] private bool invertFlipDirection;
         [SerializeField] private Transform flipRoot;
 
         private Rigidbody2D body;
@@ -23,6 +24,17 @@ namespace Metacraft.NPC
         private bool wasWalking;
 
         public bool IsMoving => moving;
+        public float MoveSpeed
+        {
+            get => moveSpeed;
+            set => moveSpeed = Mathf.Max(0f, value);
+        }
+
+        public bool InvertFlipDirection
+        {
+            get => invertFlipDirection;
+            set => invertFlipDirection = value;
+        }
 
         private void Awake()
         {
@@ -98,6 +110,12 @@ namespace Metacraft.NPC
             SetWalkAnimation(moving, 0f);
         }
 
+        public void MoveTo(Transform destination)
+        {
+            target = destination;
+            MoveNow();
+        }
+
         private void SetWalkAnimation(bool isWalking, float directionX)
         {
             if (animator == null)
@@ -126,8 +144,14 @@ namespace Metacraft.NPC
 
             if (isWalking && flipByMoveDirection && flipRoot != null && Mathf.Abs(directionX) > 0.0001f)
             {
+                float directionSign = Mathf.Sign(directionX);
+                if (invertFlipDirection)
+                {
+                    directionSign *= -1f;
+                }
+
                 Vector3 scale = flipRoot.localScale;
-                scale.x = Mathf.Sign(directionX) * defaultScaleX;
+                scale.x = directionSign * defaultScaleX;
                 flipRoot.localScale = scale;
             }
         }

@@ -8,6 +8,7 @@ namespace Metacraft.SceneFlow
     {
         [SerializeField, Min(0f)] private float delay = 0.1f;
         [SerializeField, Min(0.01f)] private float duration = 1.2f;
+        [SerializeField] private bool playOnStart = true;
         [SerializeField] private bool disableWhenFinished = true;
 
         private CanvasGroup canvasGroup;
@@ -21,7 +22,17 @@ namespace Metacraft.SceneFlow
 
         private IEnumerator Start()
         {
-            if (delay > 0f)
+            if (!playOnStart)
+            {
+                yield break;
+            }
+
+            yield return FadeIn(true);
+        }
+
+        public IEnumerator FadeIn(bool includeDelay = false)
+        {
+            if (includeDelay && delay > 0f)
             {
                 yield return new WaitForSeconds(delay);
             }
