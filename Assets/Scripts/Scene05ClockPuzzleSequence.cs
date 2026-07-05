@@ -3,6 +3,7 @@ using Metacraft.Dialogue;
 using Metacraft.Interaction;
 using Metacraft.NPC;
 using Metacraft.Player;
+using Puzzle;
 using UnityEngine;
 
 namespace Metacraft.SceneFlow
@@ -17,6 +18,8 @@ namespace Metacraft.SceneFlow
         [SerializeField, Min(0)] private int postPuzzleLineIndex = 25;
         [SerializeField, Min(1)] private int postPuzzleLineCount = 9;
         [SerializeField] private GameObject clockPuzzleRoot;
+        [SerializeField] private string clockPuzzleObjectName = "Clock Puzzle";
+        [SerializeField] private PuzzleResultChannelSO clockPuzzleResultChannel;
         [SerializeField] private bool autoCompleteWhenNoPuzzle = true;
         [SerializeField] private bool hideClockPuzzleOnComplete = true;
         [SerializeField] private NpcMoveToPoint2D doubleMovement;
@@ -35,6 +38,7 @@ namespace Metacraft.SceneFlow
         private void Awake()
         {
             interactable = GetComponent<Interactable2D>();
+            ResolveClockPuzzleRoot();
             if (clockPuzzleRoot != null)
             {
                 clockPuzzleRoot.SetActive(false);
@@ -54,6 +58,11 @@ namespace Metacraft.SceneFlow
             }
 
             interactable.Interacted += HandleInteracted;
+
+            if (clockPuzzleResultChannel != null)
+            {
+                clockPuzzleResultChannel.OnRaised += HandlePuzzleResult;
+            }
         }
 
         private void OnDisable()
@@ -63,12 +72,25 @@ namespace Metacraft.SceneFlow
                 interactable.Interacted -= HandleInteracted;
             }
 
+            if (clockPuzzleResultChannel != null)
+            {
+                clockPuzzleResultChannel.OnRaised -= HandlePuzzleResult;
+            }
+
             UnlockPlayerControls();
         }
 
         public void CompleteClockPuzzle()
         {
             puzzleCompleted = true;
+        }
+
+        private void HandlePuzzleResult(PuzzleResult result)
+        {
+            if (result == PuzzleResult.Success)
+            {
+                CompleteClockPuzzle();
+            }
         }
 
         private void HandleInteracted(GameObject interactor)
@@ -92,6 +114,7 @@ namespace Metacraft.SceneFlow
 
             yield return PlayDialogueSegment(prePuzzleLineIndex, prePuzzleLineCount);
 
+            ResolveClockPuzzleRoot();
             if (clockPuzzleRoot != null)
             {
                 clockPuzzleRoot.SetActive(true);
@@ -140,6 +163,16 @@ namespace Metacraft.SceneFlow
             {
                 yield return null;
             }
+        }
+
+        private void ResolveClockPuzzleRoot()
+        {
+            if (clockPuzzleRoot != null || string.IsNullOrWhiteSpace(clockPuzzleObjectName))
+            {
+                return;
+            }
+
+            clockPuzzleRoot = GameObject.Find(clockPuzzleObjectName);
         }
 
         private void LockPlayerControls()

@@ -3,6 +3,7 @@ using Metacraft.Dialogue;
 using Metacraft.NPC;
 using Metacraft.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Metacraft.SceneFlow
 {
@@ -21,6 +22,8 @@ namespace Metacraft.SceneFlow
         [SerializeField] private Transform doubleMoveTarget;
         [SerializeField, Min(0)] private int finalLineIndex = 46;
         [SerializeField] private int finalLineCount = -1;
+        [SerializeField] private SceneFadeOut fadeOut;
+        [SerializeField] private string nextSceneName = "ScenePrepare";
         [SerializeField] private bool triggerOnce = true;
         [SerializeField] private SimplePlayerMovement2D playerMovement;
         [SerializeField] private string playerObjectName = "MainPlayer";
@@ -80,6 +83,17 @@ namespace Metacraft.SceneFlow
             if (finalLineCount != 0)
             {
                 yield return PlayDialogueSegment(finalLineIndex, finalLineCount);
+            }
+
+            if (fadeOut != null)
+            {
+                yield return fadeOut.FadeOut();
+            }
+
+            if (!string.IsNullOrWhiteSpace(nextSceneName))
+            {
+                SceneManager.LoadScene(nextSceneName);
+                yield break;
             }
 
             UnlockPlayerControls();
