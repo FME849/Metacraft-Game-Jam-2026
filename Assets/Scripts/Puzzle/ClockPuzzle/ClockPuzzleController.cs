@@ -26,10 +26,13 @@ namespace Puzzle.ClockPuzzle
             var (hour, minute) = handDragger.GetCurrentTime();
             if (hour == targetHour && minute == targetMinute)
                 OnPuzzleSolved();
+            else
+                Debug.Log($"Wrong time! Current: {hour}:{minute}, Target: {targetHour}:{targetMinute}");
         }
 
         public void OnPuzzleSolved()
         {
+            Debug.Log($"Puzzle solved! Current: {targetHour}:{targetMinute}");
             lightIndicator.color = lightOnColor;
             Complete(PuzzleResult.Success);
         }

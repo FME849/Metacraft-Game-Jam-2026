@@ -1,0 +1,592 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 10
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 1
+    m_PVRFilteringGaussRadiusAO: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1001 &70758624
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: lines.Array.size
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: MC leaves the workshop through the servant passage, the broken gold
+        gear hidden beneath his coat.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[1]'
+      value: Behind him, the manor remains warm and alive.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[2]'
+      value: A house continuing without him.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[3]'
+      value: He crosses the west garden.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[4]'
+      value: The fog has thickened around the trees. The path to the rear gate is
+        nearly swallowed by it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[5]'
+      value: Then he sees it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[6]'
+      value: A parcel rests on the stone bench beneath the garden lantern, wrapped
+        in dark paper and bound with black cord.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[7]'
+      value: No messenger waits nearby.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[8]'
+      value: No footsteps lead away.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[9]'
+      value: MC approaches slowly.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[10]'
+      value: 'MC: Another gift.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[11]'
+      value: The parcel bears no name.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[12]'
+      value: Only the crest of House Ashworth, pressed into a gold seal.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[13]'
+      value: MC breaks the seal and opens it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[14]'
+      value: Inside are three folded papers, held together by a narrow strip of black
+        ribbon.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[15]'
+      value: The first is a travel authorization.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[16]'
+      value: 'Travel Authorization: Lord Edmund Ashworth departed House Ashworth
+        before dawn.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[17]'
+      value: 'Destination: The Registry.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[18]'
+      value: 'Route: Eastern rail line, by way of the ironworks.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[19]'
+      value: The second is an incident notice.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[20]'
+      value: 'Incident Notice:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[21]'
+      value: Eastern line incident.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[22]'
+      value: Hour certified.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[23]'
+      value: "Admission at Saint Bartholomew\u2019s by first light."
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[24]'
+      value: The third is marked with a counterstamp from the Court of Continuance.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[25]'
+      value: 'Counterstamp:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[26]'
+      value: "Claim of Continuance \u2014 entered that same morning."
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[27]'
+      value: Filed before the incident notice reached the Court.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[28]'
+      value: 'MC: The claim was filed before the accident could have reached them.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[29]'
+      value: 'MC: Unless the road was prepared as carefully as the claim.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[30]'
+      value: He holds the papers together.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[31]'
+      value: "MC: Departed before dawn. The line failed at this hour. Admitted at
+        Saint Bartholomew\u2019s by first light."
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[32]'
+      value: 'MC: One route. One hour.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[33]'
+      value: 'MC: The Court will call that one man.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[34]'
+      value: 'MC (quieter): Best that person be me.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[35]'
+      value: The words do not comfort him as much as they should.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[36]'
+      value: A sound comes from the trees.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[37]'
+      value: Not footsteps.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[38]'
+      value: A cane touching wet stone.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[39]'
+      value: MC turns.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[40]'
+      value: Beyond the lantern light, the other man waits beneath the branches,
+        half hidden by the fog.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[41]'
+      value: 'MC: You left this for me.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[42]'
+      value: 'Other Him: I did.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[43]'
+      value: 'MC: Why?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[44]'
+      value: Other Him does not come closer.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[45]'
+      value: 'Other Him: Because memory can be doubted.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[46]'
+      value: He looks toward the manor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[47]'
+      value: 'Other Him: A body can be remade.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[48]'
+      value: A pause.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[49]'
+      value: 'Other Him: But a life must arrive somewhere.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[50]'
+      value: MC steps toward him.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[51]'
+      value: 'MC: What does that mean?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[52]'
+      value: 'Other Him: Bring the parcel to the Trial.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[53]'
+      value: 'MC: Stop running from me.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[54]'
+      value: 'Other Him: I am not running from you.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[55]'
+      value: The words are almost lost in the fog.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[56]'
+      value: 'Other Him: Not anymore.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[57]'
+      value: A bell begins to toll from the Court district.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[58]'
+      value: Once.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[59]'
+      value: Then again.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[60]'
+      value: The hour before dawn.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[61]'
+      value: MC looks toward the sound.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[62]'
+      value: When he turns back, the other man is gone.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[63]'
+      value: MC stands alone in the west garden, holding the counterstamped papers
+        beneath the lantern.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[64]'
+      value: The third proof has been found.
+      objectReference: {fileID: 0}
+    - target: {fileID: 159193195069834464, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: 'lines.Array.data[65]'
+      value: Chronology Proof.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486140054593480548, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_Name
+      value: TextCrawlScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113825825967289085, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f0364fa11fbb4f65ab2d575e1887af4, type: 3}
+--- !u!1 &2084671038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084671041}
+  - component: {fileID: 2084671040}
+  - component: {fileID: 2084671039}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &2084671039
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084671038}
+  m_Enabled: 1
+--- !u!20 &2084671040
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084671038}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &2084671041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084671038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 70758624}
+  - {fileID: 2084671041}
